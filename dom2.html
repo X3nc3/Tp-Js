@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom</title>
+  </head>
+  <body>
+    <label for="text">Votre text</label>
+    <textarea name="text" id="text" class="text"></textarea>
+    <button onclick="ajouterText()">Ajouter</button>
+    <button onclick="supprimerText()">Supprimer</button>
+    <ul class="list"></ul>
+
+    <script>
+      const ajouterText = () => {
+        let text = document.querySelector(".text").value;
+        let list = (document.querySelector(
+          ".list"
+        ).innerHTML += `<li>${text}</li>`);
+        document.querySelector(".text").value = "";
+      };
+    </script>
+  </body>
+</html>

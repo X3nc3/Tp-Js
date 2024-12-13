@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="500"
+      height="500"
+      style="border: 1px solid black"
+    ></canvas>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      let dessin = false;
+
+      function startDessin(event) {
+        dessin = true;
+        ctx.beginPath();
+        ctx.moveTo(event.offsetX, event.offsetY);
+      }
+
+      function dessiner(event) {
+        if (dessin) {
+          ctx.lineTo(event.offsetX, event.offsetY);
+          ctx.stroke();
+        }
+      }
+
+      function stopDessin() {
+        dessin = false;
+      }
+
+      canvas.addEventListener("mousedown", startDessin);
+      canvas.addEventListener("mousemove", dessiner);
+      canvas.addEventListener("mouseup", stopDessin);
+    </script>
+  </body>
+</html>
